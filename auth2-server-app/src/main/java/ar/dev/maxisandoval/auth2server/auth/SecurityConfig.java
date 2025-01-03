@@ -43,22 +43,13 @@ public class SecurityConfig {
 
         http
                 .securityMatcher(authorizationServerConfigurer.getEndpointsMatcher())
-                .with(authorizationServerConfigurer, authorizationServer ->
-                        authorizationServer
-                                .oidc(Customizer.withDefaults())	// Enable OpenID Connect 1.0
-                )
-                .authorizeHttpRequests(authorize ->
-                        authorize
-                                .anyRequest().authenticated()
-                )
-                // Redirect to the login page when not authenticated from the
-                // authorization endpoint
+                .with(authorizationServerConfigurer, authorizationServer -> authorizationServer.oidc(Customizer.withDefaults()))
+                .authorizeHttpRequests(authorize -> authorize.anyRequest().authenticated())
+                // Redirect to the login page when not authenticated from the authorization endpoint
                 .exceptionHandling(exceptions -> exceptions
                         .defaultAuthenticationEntryPointFor(
                                 new LoginUrlAuthenticationEntryPoint("/login"),
-                                new MediaTypeRequestMatcher(MediaType.TEXT_HTML)
-                        )
-                );
+                                new MediaTypeRequestMatcher(MediaType.TEXT_HTML)));
 
         return http.build();
     }
@@ -67,9 +58,7 @@ public class SecurityConfig {
     @Order(2)
     public SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
         http
-                .authorizeHttpRequests(authorize -> authorize
-                        .anyRequest().authenticated()
-                )
+                .authorizeHttpRequests(authorize -> authorize.anyRequest().authenticated())
                 .csrf(AbstractHttpConfigurer::disable)
                 .formLogin(Customizer.withDefaults());
 

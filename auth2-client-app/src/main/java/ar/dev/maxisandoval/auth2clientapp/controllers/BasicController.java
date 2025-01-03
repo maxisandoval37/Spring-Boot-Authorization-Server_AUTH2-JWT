@@ -23,7 +23,8 @@ public class BasicController {
 
     @GetMapping("/authorized")
     public Map<String, String> authorized(@RequestParam String code) {
-        log.info("Authorized code: ".concat(code));
+        // jwt.io -> ver datos del token
+        log.info("Authorized code token: ".concat(code));
         return Collections.singletonMap("code", code);
     }
 
