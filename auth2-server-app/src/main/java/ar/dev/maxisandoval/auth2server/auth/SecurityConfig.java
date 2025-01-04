@@ -1,7 +1,6 @@
 package ar.dev.maxisandoval.auth2server.auth;
 
 import java.security.*;
-import java.security.KeyPairGenerator;
 import java.security.interfaces.*;
 import java.util.UUID;
 import com.nimbusds.jose.jwk.JWKSet;
