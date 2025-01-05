@@ -133,6 +133,12 @@ Authorization: Bearer <ACCESS_TOKEN>
 
 ---
 
+## Postman Collection
+
+[Spring Boot Authorization Server Auth2 JWT](https://www.postman.com/restless-eclipse-616454/spring-boot-authorization-server-auth2-jwt/overview)
+
+---
+
 ## License
 
 This project is licensed under the MIT License.
